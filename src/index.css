@@ -67,3 +67,18 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.board{
+  display: flex;
+}
+
+.cell{
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  border: 1px solid black;
+}
+
+.isLive{
+  background-color: white;
+}

@@ -1,33 +1,37 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Board from './components/Board'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cols, setCols] = useState(3)
+  const [rows, setRows] = useState(3)
+  const [speed, setSpeed] = useState(200)
+  const [play, setPlay] = useState(false)
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Game Life</h1>
+      {!play &&
+        <div className="card">
+          <h2>Board Settings</h2>
+          <div>
+            <h4>Columns:</h4>
+            <input min="3" value={cols} onChange={e => setCols(e.target.value)} />
+            <h4>Rows:</h4>
+            <input min="3" value={rows} onChange={e => setRows(e.target.value)} />
+
+          </div>
+        </div>
+      }
+      <button onClick={() => setPlay(!play)}> {!play ? "START" : "STOP"} </button>
+      {play &&
+        <div>
+          <h4>Delay: {speed}</h4>
+          <input type="range" min="200" max="10000" value={speed} onChange={e => setSpeed(e.target.value)} />
+          <Board cols={cols} rows={rows} speed={speed} />
+        </div>
+
+      }
     </div>
   )
 }
