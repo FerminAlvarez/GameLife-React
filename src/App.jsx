@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Board from './components/Board'
-import './App.css'
+import Navbar from './components/Navbar'
 
 function App() {
   const [cols, setCols] = useState(3)
@@ -9,30 +9,34 @@ function App() {
   const [play, setPlay] = useState(false)
 
   return (
-    <div className="App">
-      <h1>Game Life</h1>
-      {!play &&
-        <div className="card">
-          <h2>Board Settings</h2>
-          <div>
-            <h4>Columns:</h4>
-            <input min="3" value={cols} onChange={e => setCols(e.target.value)} />
-            <h4>Rows:</h4>
-            <input min="3" value={rows} onChange={e => setRows(e.target.value)} />
+    <>
+    <Navbar />
+      <div>
+        <h1>Game Life</h1>
+        {!play &&
+          <div className="card">
+            <h2>Board Settings</h2>
+            <div>
+              <h4>Columns:</h4>
+              <input min="3" value={cols} onChange={e => setCols(e.target.value)} />
+              <h4>Rows:</h4>
+              <input min="3" value={rows} onChange={e => setRows(e.target.value)} />
 
+            </div>
           </div>
-        </div>
-      }
-      <button onClick={() => setPlay(!play)}> {!play ? "START" : "STOP"} </button>
-      {play &&
-        <div>
-          <h4>Delay: {speed}</h4>
-          <input type="range" min="200" max="10000" value={speed} onChange={e => setSpeed(e.target.value)} />
-          <Board cols={cols} rows={rows} speed={speed} />
-        </div>
+        }
+        <button onClick={() => setPlay(!play)}> {!play ? "START" : "STOP"} </button>
+        {play &&
+          <div>
+            <h4>Delay: {speed}</h4>
+            <input type="range" min="200" max="10000" value={speed} onChange={e => setSpeed(e.target.value)} />
+            <Board cols={cols} rows={rows} speed={speed} />
+          </div>
 
-      }
-    </div>
+        }
+      </div>
+    </>
+
   )
 }
 
