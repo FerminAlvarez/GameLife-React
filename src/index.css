@@ -4,6 +4,7 @@
 
 .board {
   display: flex;
+  flex-direction: column;
 }
 
 .cell {
@@ -15,4 +16,8 @@
 
 .isLive {
   background-color: white;
+}
+
+.row {
+  display: flex;
 }

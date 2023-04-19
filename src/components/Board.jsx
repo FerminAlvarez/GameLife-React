@@ -1,20 +1,9 @@
 import { useEffect, useState } from 'react';
 import Cell from './Cell';
 
-export const randomGrid = (cols, rows) => {
-    const grid = [];
-    for (let i = 0; i < rows; i++) {
-        const row = [];
-        for (let j = 0; j < cols; j++) {
-            row.push(Math.floor(Math.random() * 2));
-        }
-        grid.push(row);
-    }
-    return grid;
-}
-
-const Board = ({cols, rows, speed}) => {
-    let [grid, setGrid] = useState(randomGrid(cols, rows));
+export default function Board({ initGrid, cols, rows }) {
+    let [grid, setGrid] = useState(initGrid);
+    let [speed, setSpeed] = useState(750);
     let [instance, setInstance] = useState(0);
 
     const setCellValueHelper = (row, col) => {
@@ -82,19 +71,21 @@ const Board = ({cols, rows, speed}) => {
     }, [grid]);
 
     return (
-        <div className="board">
+        <div className="board items-center">
             {grid &&
                 grid.map((rows, i) => (
-                    <div>
+                    <div className='row'>
                         {rows.map((col, j) => (
                             <Cell key={`${i}${j}`} isLive={grid[i][j] ? true : false} />
                         ))}
                     </div>
                 ))
             }
+            <div>
+                <button class="btn btn-primary m-5" onClick={() => setSpeed(speed + speed * 0.1)}>Slower</button>
+                <button class="btn btn-primary m-5" onClick={() => { speed >= 10 ? setSpeed(speed - speed * 0.1) : "" }}>Faster</button>
+            </div>
             <h1> Generation : {instance} </h1>
         </div>
     );
 }
-
-export default Board;
