@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import Cell from './Cell';
+import { saveGrid } from '../services/BoardService';
 
 export default function Board({ initGrid, cols, rows }) {
+    const backupGrid = initGrid;
     let [grid, setGrid] = useState(initGrid);
     let [speed, setSpeed] = useState(750);
     let [instance, setInstance] = useState(0);
@@ -84,6 +86,7 @@ export default function Board({ initGrid, cols, rows }) {
             <div>
                 <button class="btn btn-primary m-5" onClick={() => setSpeed(speed + speed * 0.1)}>Slower</button>
                 <button class="btn btn-primary m-5" onClick={() => { speed >= 10 ? setSpeed(speed - speed * 0.1) : "" }}>Faster</button>
+                <button class="btn btn-secondary m-5" onClick={() => saveGrid(backupGrid)}>SAVE</button>
             </div>
             <h1> Generation : {instance} </h1>
         </div>
