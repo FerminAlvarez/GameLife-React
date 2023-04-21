@@ -83,12 +83,12 @@ export default function Board({ initGrid, cols, rows }) {
                     </div>
                 ))
             }
+            <h1> Generation : {instance} </h1>
             <div>
                 <button class="btn btn-primary m-5" onClick={() => setSpeed(speed + speed * 0.1)}>Slower</button>
                 <button class="btn btn-primary m-5" onClick={() => { speed >= 10 ? setSpeed(speed - speed * 0.1) : "" }}>Faster</button>
                 <button class="btn btn-secondary m-5" onClick={() => saveGrid(backupGrid)}>SAVE</button>
             </div>
-            <h1> Generation : {instance} </h1>
         </div>
     );
 }

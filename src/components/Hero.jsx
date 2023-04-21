@@ -8,8 +8,8 @@ export default function Hero() {
                     <div className="max-w-2xl">
                         <h1 className="mb-5 text-5xl font-extrabold text-white uppercase">Play Conway's Game of Life and Share Your Creations</h1>
                         <p className="mb-5 text-white">Experience the mesmerizing world of life simulation with Conway's Game of Life. Play now and witness the evolution of captivating patterns and shapes. Join the Game of Life community and discover endless possibilities for creativity and innovation.</p>
-                        <button className="btn btn-primary mx-5"><Link to="/play">Play</Link></button>
-                        <button className="btn btn-primary mx-5"><Link to="/explore">Explore</Link></button>
+                        <Link to="/play" className="btn btn-primary mx-5">Play</Link>
+                        <Link to="/explore" className="btn btn-primary mx-5">Explore</Link>
                     </div>
                 </div>
             </div>

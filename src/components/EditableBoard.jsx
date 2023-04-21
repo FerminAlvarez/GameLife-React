@@ -16,18 +16,16 @@ export default function ({ cols, rows, handleClick }) {
     }
 
     return (
-        <div>
-            <div className="board items-center">
-                {grid &&
-                    grid.map((rows, i) => (
-                        <div className='row'>
-                            {rows.map((col, j) => (
-                                <EditableCell key={`${i}${j}`} isLive={grid[i][j] ? true : false} clickHandler={updateBoard} row={i} col={j} />
-                            ))}
-                        </div>
-                    ))
-                }
-            </div>
+        <div className="board items-center">
+            {grid &&
+                grid.map((rows, i) => (
+                    <div className='row'>
+                        {rows.map((col, j) => (
+                            <EditableCell key={`${i}${j}`} isLive={grid[i][j] ? true : false} clickHandler={updateBoard} row={i} col={j} />
+                        ))}
+                    </div>
+                ))
+            }
             <button class="btn btn-primary m-5" onClick={() => handleClick(grid)}>START</button>
         </div>
     );
