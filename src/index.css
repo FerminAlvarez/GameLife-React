@@ -5,11 +5,12 @@
 .board {
   display: flex;
   flex-direction: column;
+  height: 80vh;
 }
 
 .cell {
-  width: 30px;
-  height: 30px;
+  width: inherit;
+  aspect-ratio: 1 / 1;
   background-color: black;
   border: 1px solid white;
 }
@@ -20,4 +21,6 @@
 
 .row {
   display: flex;
+  justify-content: center;
+  height: 80vh;
 }
