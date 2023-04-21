@@ -31,6 +31,7 @@ export default function CustomGame() {
             {
                 create &&
                 <div>
+                    <h5>You can click in a cell to toggle</h5>
                     <EditableBoard cols={cols} rows={rows} handleClick={start} />
                 </div>
 
