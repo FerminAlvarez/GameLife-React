@@ -17,15 +17,19 @@ export default function CustomGame() {
     return (
         <>
             {!create && !play &&
-                <div className="card">
-                    <h2>Board Settings</h2>
-                    <div>
-                        <h4>Columns:</h4>
-                        <input min="3" value={cols} onChange={e => setCols(+e.target.value)} />
-                        <h4>Rows:</h4>
-                        <input min="3" value={cols} disabled/>
+                <div>
+                    <h2 className='font-bold text-2xl'>Board Settings</h2>
+                    <div className='flex justify-center flex-col'>
+                        <div className='my-5'>
+                            <h4>Columns</h4>
+                            <input min="3" value={cols} onChange={e => setCols(+e.target.value)} className="input input-bordered w-full max-w-xs mx-5" />
+                        </div>
+                        <div>
+                            <h4>Rows</h4>
+                            <input min="3" value={cols} disabled className="input input-bordered w-full max-w-xs mx-5" />
+                        </div>
                     </div>
-                    <button onClick={() => setCreate(true)}> {!create ? "CREATE" : ""} </button>
+                    <button class="btn btn-secondary mt-5 w-72 " onClick={() => setCreate(true)}> {!create ? "CREATE" : ""} </button>
                 </div>
             }
             {
