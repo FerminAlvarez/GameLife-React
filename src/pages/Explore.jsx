@@ -1,13 +1,14 @@
 import BoardPreview from "../components/BoardPreview";
 import { useEffect, useState } from 'react';
-import { getAllGrids } from "../services/BoardService";
+import { getAllGridsInfo } from "../services/BoardService";
+import { Link } from "react-router-dom";
 
 export default function Explore() {
     let [boards, setBoards] = useState(null)
     let [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getAllGrids().then((data) => { setBoards(data.data); setIsLoading(false) })
+        getAllGridsInfo().then((data) => { setBoards(data.data); setIsLoading(false) })
         return () => { }
     }, [])
 
@@ -16,10 +17,11 @@ export default function Explore() {
             {!isLoading && boards.map((board) => {
                 return (
                     <div className="m-5">
-                        <BoardPreview title={board.title} description ={board.description}/>
+                        <Link to={"/play/" + board.id}>
+                            <BoardPreview title={board.title} description={board.description} avatar={board.profiles.avatar_url} name={board.profiles.full_name} />
+                        </Link>
                     </div>
                 )
-
             })
             }
         </div>

@@ -3,8 +3,17 @@ import { Link } from "react-router-dom";
 import { AiFillHeart } from 'react-icons/ai';
 import { GiLovers } from 'react-icons/gi';
 import { IoIosPeople, IoIosPerson } from 'react-icons/io';
-import BoardPreview from "../components/BoardPreview";
+import BoardPreviewHome from "../components/BoardPreviewHome";
+import { useEffect, useState } from 'react';
+import { getLastGridsInfo } from "../services/BoardService";
 export default function Home() {
+    let [isLoading, setIsLoading] = useState(true)
+    let [boardsInfo, setBoardsInfo] = useState(null)
+
+    useEffect(() => {
+        getLastGridsInfo().then((data) => { setBoardsInfo(data.data); setIsLoading(false) })
+        return () => { }
+    }, [])
     return (
         <>
             <Hero />
@@ -46,21 +55,28 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="my-5 text-center max-w-3xl mx-auto my-12">
+            <div className="my-5 text-center max-w-3xl mx-auto my-12 overflow">
                 <h3 className="text-xl font-bold my-5">EXPLORE THE LAST CONFIGURATIONS</h3>
                 <div className="flex justify-center space-x-2">
-                    <Link to="/1">
-                        <BoardPreview />
-                    </Link>
 
-                    <Link to="/2">
-                        <BoardPreview />
-                    </Link>
+                    {!isLoading &&
+                        <>
+                            <Link to={"/"+boardsInfo[0].id}>
+                                <BoardPreviewHome title={boardsInfo[0].title} description={boardsInfo[0].description} avatar={boardsInfo[0].profiles.avatar_url} name={boardsInfo[0].profiles.full_name} />
+                            </Link>
 
-                    <Link to="/3">
-                        <BoardPreview />
-                    </Link>
+                            <Link to={"/"+boardsInfo[1].id}>
+                                <BoardPreviewHome title={boardsInfo[1].title} description={boardsInfo[1].description} avatar={boardsInfo[1].profiles.avatar_url} name={boardsInfo[1].profiles.full_name} />
+                            </Link>
+
+                            <Link to={"/"+boardsInfo[2].id}>
+                                <BoardPreviewHome title={boardsInfo[2].title} description={boardsInfo[2].description} avatar={boardsInfo[2].profiles.avatar_url} name={boardsInfo[2].profiles.full_name} />
+                            </Link>
+                        </>
+                    }
+
                 </div>
+                *The animations are not from the generations.
             </div>
         </>
 

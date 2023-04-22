@@ -5,15 +5,52 @@ export async function saveGrid(grid, title, description) {
         .insert([
             {
                 grid: grid,
-                title: "Config 1",
-                description: "Description 1"
+                title: title,
+                description: description
             },
         ])
 }
 
-export async function getAllGrids() {
+export async function getAllGridsInfo() {
     return await supabase
         .from('Boards')
-        .select('*')
+        .select(`id,
+        title, 
+        description,
+        profiles(
+            id,
+            full_name,
+            avatar_url
+        )`)
+        .order('id', { ascending: false });
+}
 
+export async function getLastGridsInfo() {
+    return await supabase
+        .from('Boards')
+        .select(`id,
+        title, 
+        description,
+        profiles(
+            id,
+            full_name,
+            avatar_url
+        )`)
+        .order('id', { ascending: false })
+        .range(0, 3);
+}
+export async function getBoard(id) {
+    return await supabase
+        .from('Boards')
+        .select(`id,
+        title, 
+        description,
+        grid,
+        created_at,
+        profiles(
+            id,
+            full_name,
+            avatar_url
+        )`)
+        .eq('id', id)
 }

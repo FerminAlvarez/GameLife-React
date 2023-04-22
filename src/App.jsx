@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import SettingsGame from './components/SettingsGame'
 import Home from './pages/Home'
 import Explore from './pages/Explore'
+import SeeGame from './pages/SeeGame'
 import { AuthContextProvider } from './context/AuthContext'
 
 
@@ -18,6 +19,8 @@ function App() {
           <Route path='/play' element={<SettingsGame />} />
 
           <Route path='/explore' element={<Explore />} />
+          
+          <Route path='/play/:id' element={<SeeGame />} />
         </Routes>
       </AuthContextProvider>
     </BrowserRouter>
