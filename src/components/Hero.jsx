@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
+import imgUrl from '/src/assets/game-of-life-loop.gif'
+
 export default function Hero() {
     return (
         <section>
-            <div className="hero min-h-screen" style={{ backgroundImage: `url("/src/assets/game-of-life-loop.gif")` }}>
+            <div className="hero min-h-screen" style={{ backgroundImage: `url(${imgUrl})` }}>
                 <div className="hero-overlay bg-opacity-80"></div>
                 <div className="hero-content text-center ">
                     <div className="max-w-2xl">

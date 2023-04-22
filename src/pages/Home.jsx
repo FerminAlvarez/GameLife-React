@@ -6,6 +6,10 @@ import { IoIosPeople, IoIosPerson } from 'react-icons/io';
 import BoardPreviewHome from "../components/BoardPreviewHome";
 import { useEffect, useState } from 'react';
 import { getLastGridsInfo } from "../services/BoardService";
+import gif1 from '/src/assets/game-of-life-1.gif'
+import gif2 from '/src/assets/game-of-life-2.gif'
+import gif3 from '/src/assets/game-of-life-3.gif'
+
 export default function Home() {
     let [isLoading, setIsLoading] = useState(true)
     let [boardsInfo, setBoardsInfo] = useState(null)
@@ -61,16 +65,16 @@ export default function Home() {
 
                     {!isLoading &&
                         <>
-                            <Link to={"/play/"+boardsInfo[0].id}>
-                                <BoardPreviewHome title={boardsInfo[0].title} description={boardsInfo[0].description} avatar={boardsInfo[0].profiles.avatar_url} name={boardsInfo[0].profiles.full_name} gif="/src/assets/game-of-life-1.gif" />
+                            <Link to={"/play/" + boardsInfo[0].id}>
+                                <BoardPreviewHome title={boardsInfo[0].title} description={boardsInfo[0].description} avatar={boardsInfo[0].profiles.avatar_url} name={boardsInfo[0].profiles.full_name} gif={gif1} />
                             </Link>
 
-                            <Link to={"/play/"+boardsInfo[1].id}>
-                                <BoardPreviewHome title={boardsInfo[1].title} description={boardsInfo[1].description} avatar={boardsInfo[1].profiles.avatar_url} name={boardsInfo[1].profiles.full_name} gif="/src/assets/game-of-life-2.gif"/>
+                            <Link to={"/play/" + boardsInfo[1].id}>
+                                <BoardPreviewHome title={boardsInfo[1].title} description={boardsInfo[1].description} avatar={boardsInfo[1].profiles.avatar_url} name={boardsInfo[1].profiles.full_name} gif={gif2} />
                             </Link>
 
-                            <Link to={"/play/"+boardsInfo[2].id}>
-                                <BoardPreviewHome title={boardsInfo[2].title} description={boardsInfo[2].description} avatar={boardsInfo[2].profiles.avatar_url} name={boardsInfo[2].profiles.full_name} gif="/src/assets/game-of-life-3.gif" />
+                            <Link to={"/play/" + boardsInfo[2].id}>
+                                <BoardPreviewHome title={boardsInfo[2].title} description={boardsInfo[2].description} avatar={boardsInfo[2].profiles.avatar_url} name={boardsInfo[2].profiles.full_name} gif={gif3} />
                             </Link>
                         </>
                     }
