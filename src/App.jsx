@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Explore from './pages/Explore'
 import SeeGame from './pages/SeeGame'
 import { AuthContextProvider } from './context/AuthContext'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           
           <Route path='/play/:id' element={<SeeGame />} />
         </Routes>
+        <Footer />
       </AuthContextProvider>
     </BrowserRouter>
 
