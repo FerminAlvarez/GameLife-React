@@ -74,7 +74,7 @@ export default function ViewBoard({ initGrid, title, description, avatar, name, 
 
     return (
         <>
-            <div class="flex flex-col	 bg-white shadow-lg rounded-lg mx-auto my-5 mx-72">
+            <div class="flex flex-col bg-white shadow-lg rounded-lg mx-auto my-5 mx-72 w-9/12">
                 <div class="flex px-4 py-6">
                     <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src={avatar} alt="avatar" />
                     <div className='w-full'>
