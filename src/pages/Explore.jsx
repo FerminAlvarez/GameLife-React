@@ -13,17 +13,21 @@ export default function Explore() {
     }, [])
 
     return (
-        <div className="flex flex-wrap justify-center">
-            {!isLoading && boards.map((board) => {
-                return (
-                    <div className="m-5">
-                        <Link to={"/play/" + board.id}>
-                            <BoardPreview title={board.title} description={board.description} avatar={board.profiles.avatar_url} name={board.profiles.full_name} />
-                        </Link>
-                    </div>
-                )
-            })
-            }
+        <div>
+            <h2 className="text-2xl font-bold my-5 mx-auto text-center">The Latest 50 Configurations</h2>
+            <div className="flex flex-wrap justify-center">
+                {!isLoading && boards.map((board) => {
+                    return (
+                        <div className="m-5">
+                            <Link to={"/play/" + board.id}>
+                                <BoardPreview title={board.title} description={board.description} avatar={board.profiles.avatar_url} name={board.profiles.full_name} />
+                            </Link>
+                        </div>
+                    )
+                })
+                }
+            </div>
+
         </div>
 
     )

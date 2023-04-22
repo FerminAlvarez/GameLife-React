@@ -22,7 +22,8 @@ export async function getAllGridsInfo() {
             full_name,
             avatar_url
         )`)
-        .order('id', { ascending: false });
+        .order('id', { ascending: false })
+        .range(0, 50);
 }
 
 export async function getLastGridsInfo() {
