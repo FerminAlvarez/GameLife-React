@@ -23,7 +23,7 @@ export default function CustomGame() {
                         <h4>Columns:</h4>
                         <input min="3" value={cols} onChange={e => setCols(+e.target.value)} />
                         <h4>Rows:</h4>
-                        <input min="3" value={rows} onChange={e => setRows(+e.target.value)} />
+                        <input min="3" value={cols} disabled/>
                     </div>
                     <button onClick={() => setCreate(true)}> {!create ? "CREATE" : ""} </button>
                 </div>
@@ -32,14 +32,14 @@ export default function CustomGame() {
                 create &&
                 <div>
                     <h5>You can click in a cell to toggle</h5>
-                    <EditableBoard cols={cols} rows={rows} handleClick={start} />
+                    <EditableBoard cols={cols} rows={cols} handleClick={start} />
                 </div>
 
             }
             {
                 play &&
                 <div>
-                    <Board initGrid={grid} cols={cols} rows={rows} />
+                    <Board initGrid={grid} cols={cols} rows={cols} />
                 </div>
             }
         </>
