@@ -61,15 +61,15 @@ export default function Home() {
 
                     {!isLoading &&
                         <>
-                            <Link to={"/"+boardsInfo[0].id}>
+                            <Link to={"/play/"+boardsInfo[0].id}>
                                 <BoardPreviewHome title={boardsInfo[0].title} description={boardsInfo[0].description} avatar={boardsInfo[0].profiles.avatar_url} name={boardsInfo[0].profiles.full_name} />
                             </Link>
 
-                            <Link to={"/"+boardsInfo[1].id}>
+                            <Link to={"/play/"+boardsInfo[1].id}>
                                 <BoardPreviewHome title={boardsInfo[1].title} description={boardsInfo[1].description} avatar={boardsInfo[1].profiles.avatar_url} name={boardsInfo[1].profiles.full_name} />
                             </Link>
 
-                            <Link to={"/"+boardsInfo[2].id}>
+                            <Link to={"/play/"+boardsInfo[2].id}>
                                 <BoardPreviewHome title={boardsInfo[2].title} description={boardsInfo[2].description} avatar={boardsInfo[2].profiles.avatar_url} name={boardsInfo[2].profiles.full_name} />
                             </Link>
                         </>
