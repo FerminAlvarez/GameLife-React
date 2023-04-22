@@ -24,3 +24,10 @@
   justify-content: center;
   height: 80vh;
 }
+
+.App{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+}

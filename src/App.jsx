@@ -13,6 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextProvider>
+      <div className="App">
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -24,6 +25,7 @@ function App() {
           <Route path='/play/:id' element={<SeeGame />} />
         </Routes>
         <Footer />
+        </div>
       </AuthContextProvider>
     </BrowserRouter>
 
