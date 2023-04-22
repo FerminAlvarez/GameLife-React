@@ -7,12 +7,12 @@ export default function PublishButton({ backupGrid }) {
     let [description, setDescription] = useState()
     const navigate = useNavigate()
     return (
-        <form>
+        <form onSubmit={() => { saveGrid(backupGrid, title, description); navigate("/explore"); }}>
             <input type="text" minlength="5" placeholder="Title" className="input input-bordered w-full max-w-xs mx-5" required onChange={e => setTitle(e.target.value)} />
 
             <textarea minlength="5" placeholder="Description" className="textarea textarea-bordered w-full max-w-xs m-5" required onChange={e => setDescription(e.target.value)} />
             <div>
-                <input type="button" class="btn btn-secondary mb-5" value="PUBLISH" onClick={() => { saveGrid(backupGrid, title, description); navigate("/explore"); }} />
+                <input type="submit" class="btn btn-secondary mb-5" value="PUBLISH" />
             </div>
         </form>
 
