@@ -1,6 +1,6 @@
 export default function BoardPreviewHome({ avatar, name, title, description, gif }) {
     return (
-        <div className="card w-72 bg-base-100 shadow-xl image-full">
+        <div className="card w-72 max-h-72 bg-base-100 shadow-xl image-full overflow-hidden ">
             <img src={gif} alt="Shoes"/>
             <div className="card-body">
                 <label class="avatar">
