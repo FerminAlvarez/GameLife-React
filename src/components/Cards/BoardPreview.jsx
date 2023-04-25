@@ -1,4 +1,4 @@
-export default function BoardPreviewHome({ avatar, name, title, description, gif }) {
+export default function BoardPreview({ avatar, name, title, description, gif }) {
     return (
         <div className="card w-72 max-h-72 bg-base-100 shadow-xl image-full overflow-hidden ">
             <img src={gif} alt="board preview"/>

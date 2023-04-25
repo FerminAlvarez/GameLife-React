@@ -1,4 +1,4 @@
-export default function BoardPreview({ avatar, name, title, description }) {
+export default function BoardPreviewGif({ avatar, name, title, description }) {
     return (
         <div className="card w-72 bg-base-100 shadow-xl ">
             <div className="card-body">

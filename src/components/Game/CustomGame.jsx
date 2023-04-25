@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import Board from './Board'
-import EditableBoard from './EditableBoard'
+import EditableBoard from './Custom/EditableBoard'
+import PublishForm from './PublishForm'
 export default function CustomGame() {
     const [cols, setCols] = useState(3)
-    const [rows, setRows] = useState(3)
-    const [grid, setGrid] = useState();
+    const [initGrid, setInitGrid] = useState();
     const [create, setCreate] = useState(false)
     const [play, setPlay] = useState(false)
 
-    function start(grid) {
+    function start(initGrid) {
         setCreate(false)
         setPlay(true)
-        setGrid(grid)
+        setInitGrid(initGrid)
     }
 
     return (
@@ -43,7 +43,8 @@ export default function CustomGame() {
             {
                 play &&
                 <div>
-                    <Board initGrid={grid} cols={cols} rows={cols} />
+                    <Board initGrid={initGrid} cols={cols} rows={cols} />
+                    <PublishForm initGrid={initGrid} />
                 </div>
             }
         </>

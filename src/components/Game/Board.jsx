@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Cell from './Cell';
+import PublishForm from './PublishForm'
 
-export default function ViewBoard({ initGrid, title, description, avatar, name, created_at }) {
+export default function Board({ initGrid, cols, rows }) {
+    const backupGrid = initGrid;
     let [grid, setGrid] = useState(initGrid);
     let [speed, setSpeed] = useState(750);
     let [instance, setInstance] = useState(0);
-    const cols = grid[0].length;
-    const rows = cols;
 
     const setCellValueHelper = (row, col) => {
         try {
@@ -73,41 +73,21 @@ export default function ViewBoard({ initGrid, title, description, avatar, name, 
     }, [grid]);
 
     return (
-        <>
-            <div class="flex flex-col bg-white shadow-lg rounded-lg mx-auto my-5 mx-72 w-9/12">
-                <div class="flex px-4 py-6">
-                    <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src={avatar} alt="avatar" />
-                    <div className='w-full'>
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-lg font-semibold text-gray-900 -mt-1">{name} </h2>
-                            <small class="text-sm text-gray-700 ">{created_at.split('T')[0]}</small>
-                        </div>
-
-                        <h2 class="text-md font-semibold text-gray-900">{title} </h2>
-                        <p class="mt-3 text-gray-700 text-sm">
-                            {description}
-                        </p>
+        <div className="board items-center">
+            {grid &&
+                grid.map((rows, i) => (
+                    <div className='row'>
+                        {rows.map((col, j) => (
+                            <Cell key={`${i}${j}`} isLive={grid[i][j] ? true : false} />
+                        ))}
                     </div>
-                </div>
-                <div className="board items-center flex">
-
-                {grid &&
-                    grid.map((rows, i) => (
-                        <div className='row'>
-                            {rows.map((col, j) => (
-                                <Cell key={`${i}${j}`} isLive={grid[i][j] ? true : false} />
-                            ))}
-                        </div>
-                    ))
-                }
-                <h1> Generation : {instance} </h1>
-                <div>
-                    <button class="btn btn-primary m-5" onClick={() => setSpeed(speed + speed * 0.1)}>Slower</button>
-                    <button class="btn btn-primary m-5" onClick={() => { speed >= 10 ? setSpeed(speed - speed * 0.1) : "" }}>Faster</button>
-                </div>
+                ))
+            }
+            <h1> Generation : {instance} </h1>
+            <div>
+                <button class="btn btn-primary m-5" onClick={() => setSpeed(speed + speed * 0.1)}>Slower</button>
+                <button class="btn btn-primary m-5" onClick={() => { speed >= 10 ? setSpeed(speed - speed * 0.1) : "" }}>Faster</button>
             </div>
-            </div>
-            
-        </>
+        </div>
     );
 }

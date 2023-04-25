@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import SettingsGame from './components/SettingsGame'
+import Navbar from './components/Navbar/Navbar'
+import SettingsGame from './components/Game/SettingsGame'
 import Home from './pages/Home'
 import Explore from './pages/Explore'
 import SeeGame from './pages/SeeGame'
 import { AuthContextProvider } from './context/AuthContext'
-import Footer from './components/Footer'
+import Footer from './components/Footer/Footer'
 
 
 function App() {

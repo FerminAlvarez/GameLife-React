@@ -1,4 +1,5 @@
-import Board from './Board';
+import Board from '../Board';
+import PublishForm from '../PublishForm';
 
 const randomGrid = (cols, rows) => {
     const grid = [];
@@ -14,7 +15,13 @@ const randomGrid = (cols, rows) => {
 
 export default function RandomBoard() {
     let cols = Math.floor(Math.random() * 30) + 3;
+    let rows = cols;
+    const initGrid = randomGrid(cols, rows);
+
     return (
-        <Board initGrid={randomGrid(cols, cols)} cols={cols} rows={cols}/>
+        <>
+            <Board initGrid={initGrid} cols={cols} rows={cols} />
+            <PublishForm initGrid={initGrid} />
+        </>
     )
 }

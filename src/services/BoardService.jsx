@@ -38,8 +38,9 @@ export async function getLastGridsInfo() {
             avatar_url
         )`)
         .order('id', { ascending: false })
-        .range(0, 3);
+        .range(0, 2);
 }
+
 export async function getBoard(id) {
     return await supabase
         .from('Boards')

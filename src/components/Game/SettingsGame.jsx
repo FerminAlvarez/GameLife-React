@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import RandomBoard from './RandomBoard'
-import CustomGame from './CustomGame'
+import RandomBoard from '../Game/Random/RandomBoard'
+import CustomGame from '../Game/CustomGame'
 
 export default function SettingsGame() {
     let [gameType, setGameType] = useState(null)
@@ -21,7 +21,7 @@ export default function SettingsGame() {
                 {isPlaying &&
                     <button class="btn btn-primary m-5" onClick={() => { setIsPlaying(false); setGameType(null); }}>Back</button>
                 }
-
+            
                 {gameType == "Random" &&
                     <>
                         <button class="btn btn-primary m-5" onClick={() => { setGameType("Random"); setBoardID(boardID + 1); setIsPlaying(true) }}>Random Board</button>

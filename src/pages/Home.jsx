@@ -1,23 +1,17 @@
-import Hero from "../components/Hero"
+import Hero from "../components/Hero/Hero"
 import { Link } from "react-router-dom";
 import { AiFillHeart } from 'react-icons/ai';
 import { GiLovers } from 'react-icons/gi';
 import { IoIosPeople, IoIosPerson } from 'react-icons/io';
-import BoardPreviewHome from "../components/BoardPreviewHome";
-import { useEffect, useState } from 'react';
-import { getLastGridsInfo } from "../services/BoardService";
+import BoardPreview from "../components/Cards/BoardPreview";
 import gif1 from '/src/assets/game-of-life-1.gif'
 import gif2 from '/src/assets/game-of-life-2.gif'
 import gif3 from '/src/assets/game-of-life-3.gif'
+import useGetLastGrid from "../hooks/useGetLastGrid";
 
 export default function Home() {
-    let [isLoading, setIsLoading] = useState(true)
-    let [boardsInfo, setBoardsInfo] = useState(null)
+    const { lastBoards, isLoading } = useGetLastGrid();
 
-    useEffect(() => {
-        getLastGridsInfo().then((data) => { setBoardsInfo(data.data); setIsLoading(false) })
-        return () => { }
-    }, [])
     return (
         <>
             <Hero />
@@ -65,16 +59,16 @@ export default function Home() {
 
                     {!isLoading &&
                         <>
-                            <Link to={"/play/" + boardsInfo[0].id}>
-                                <BoardPreviewHome title={boardsInfo[0].title} description={boardsInfo[0].description} avatar={boardsInfo[0].profiles.avatar_url} name={boardsInfo[0].profiles.full_name} gif={gif1} />
+                            <Link to={"/play/" + lastBoards[0].id}>
+                                <BoardPreview title={lastBoards[0].title} description={lastBoards[0].description} avatar={lastBoards[0].profiles.avatar_url} name={lastBoards[0].profiles.full_name} gif={gif1} />
                             </Link>
 
-                            <Link to={"/play/" + boardsInfo[1].id}>
-                                <BoardPreviewHome title={boardsInfo[1].title} description={boardsInfo[1].description} avatar={boardsInfo[1].profiles.avatar_url} name={boardsInfo[1].profiles.full_name} gif={gif2} />
+                            <Link to={"/play/" + lastBoards[1].id}>
+                                <BoardPreview title={lastBoards[1].title} description={lastBoards[1].description} avatar={lastBoards[1].profiles.avatar_url} name={lastBoards[1].profiles.full_name} gif={gif2} />
                             </Link>
 
-                            <Link to={"/play/" + boardsInfo[2].id}>
-                                <BoardPreviewHome title={boardsInfo[2].title} description={boardsInfo[2].description} avatar={boardsInfo[2].profiles.avatar_url} name={boardsInfo[2].profiles.full_name} gif={gif3} />
+                            <Link to={"/play/" + lastBoards[2].id}>
+                                <BoardPreview title={lastBoards[2].title} description={lastBoards[2].description} avatar={lastBoards[2].profiles.avatar_url} name={lastBoards[2].profiles.full_name} gif={gif3} />
                             </Link>
                         </>
                     }

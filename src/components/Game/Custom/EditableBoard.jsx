@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import EditableCell from './EditableCell';
+import EditableCell from '../EditableCell'
 
 
 export default function ({ cols, rows, handleClick }) {
