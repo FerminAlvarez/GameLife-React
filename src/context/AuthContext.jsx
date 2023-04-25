@@ -8,10 +8,10 @@ export const AuthContextProvider = ({ children }) => {
         try {
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: 'google'
-            }).then((a) => {
-                console.log(a)
             })
+
             if (error) throw new Error("Error in sign in")
+
             return data
         } catch (error) {
             console.log(error)
@@ -30,15 +30,12 @@ export const AuthContextProvider = ({ children }) => {
             }
             if (session != null) {
                 setUser(session?.user)
-                console.log(session?.user)
             }
-
             return () => {
                 authListener.subscription
             }
         })
     }, [])
-
 
     return (
         <AuthContext.Provider value={{ signInWithGoogle, signOut, user }}>
@@ -48,6 +45,6 @@ export const AuthContextProvider = ({ children }) => {
 
 };
 
-export function UserAuth() {
+export function userAuth() {
     return useContext(AuthContext)
 }

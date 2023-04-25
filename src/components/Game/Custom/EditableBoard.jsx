@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import EditableCell from '../EditableCell'
 
-
 export default function ({ cols, rows, handleClick }) {
-    let [grid, setGrid] = useState(Array(rows).fill(0).map(() => Array(cols).fill(0)))
+    const [grid, setGrid] = useState(Array(rows).fill(0).map(() => Array(cols).fill(0)))
 
     function toggleCell(row, col) {
-        return 1 - grid[row][col]
+        let cell = grid[row][col]
+        return 1 - cell
     }
 
     function updateBoard(row, col) {
@@ -19,14 +19,14 @@ export default function ({ cols, rows, handleClick }) {
         <div className="board items-center">
             {grid &&
                 grid.map((rows, i) => (
-                    <div className='row'>
+                    <div key={i} className='row'>
                         {rows.map((col, j) => (
-                            <EditableCell key={`${i}${j}`} isLive={grid[i][j] ? true : false} clickHandler={updateBoard} row={i} col={j} />
+                            <EditableCell key={`${i}${j}`} isLive={grid[i][j] == true} clickHandler={updateBoard} row={i} col={j} />
                         ))}
                     </div>
                 ))
             }
-            <button class="btn btn-primary m-5" onClick={() => handleClick(grid)}>START</button>
+            <button className="btn btn-primary m-5" onClick={() => handleClick(grid)}>START</button>
         </div>
     );
 }

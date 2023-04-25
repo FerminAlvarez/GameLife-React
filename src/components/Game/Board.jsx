@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import Cell from './Cell';
-import PublishForm from './PublishForm'
 
 export default function Board({ initGrid, cols, rows }) {
-    const backupGrid = initGrid;
     let [grid, setGrid] = useState(initGrid);
     let [speed, setSpeed] = useState(750);
     let [instance, setInstance] = useState(0);
@@ -76,17 +74,17 @@ export default function Board({ initGrid, cols, rows }) {
         <div className="board items-center">
             {grid &&
                 grid.map((rows, i) => (
-                    <div className='row'>
+                    <div key={i} className='row'>
                         {rows.map((col, j) => (
-                            <Cell key={`${i}${j}`} isLive={grid[i][j] ? true : false} />
+                            <Cell key={`${i}${j}`} isLive={grid[i][j] == true } />
                         ))}
                     </div>
                 ))
             }
             <h1> Generation : {instance} </h1>
             <div>
-                <button class="btn btn-primary m-5" onClick={() => setSpeed(speed + speed * 0.1)}>Slower</button>
-                <button class="btn btn-primary m-5" onClick={() => { speed >= 10 ? setSpeed(speed - speed * 0.1) : "" }}>Faster</button>
+                <button className="btn btn-primary m-5" onClick={() => setSpeed(speed + speed * 0.1)}>Slower</button>
+                <button className="btn btn-primary m-5" onClick={() => { speed >= 10 ? setSpeed(speed - speed * 0.1) : "" }}>Faster</button>
             </div>
         </div>
     );

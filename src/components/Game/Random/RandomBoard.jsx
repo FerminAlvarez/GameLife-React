@@ -1,6 +1,8 @@
 import Board from '../Board';
 import PublishForm from '../PublishForm';
 
+const MIN_COLS = 3;
+const MAX_COLS = 30;
 const randomGrid = (cols, rows) => {
     const grid = [];
     for (let i = 0; i < rows; i++) {
@@ -14,9 +16,9 @@ const randomGrid = (cols, rows) => {
 }
 
 export default function RandomBoard() {
-    let cols = Math.floor(Math.random() * 30) + 3;
-    let rows = cols;
-    const initGrid = randomGrid(cols, rows);
+    const cols = Math.floor(Math.random() * (MAX_COLS - MIN_COLS + 1)) + MIN_COLS;
+    const rows = cols;
+    let initGrid = randomGrid(cols, rows);
 
     return (
         <>

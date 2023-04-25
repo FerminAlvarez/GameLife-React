@@ -57,26 +57,18 @@ export default function Home() {
                 <h3 className="text-xl font-bold my-5">EXPLORE THE LAST CONFIGURATIONS</h3>
                 <div className="flex justify-center space-x-2">
 
-                    {!isLoading &&
-                        <>
-                            <Link to={"/play/" + lastBoards[0].id}>
-                                <BoardPreview title={lastBoards[0].title} description={lastBoards[0].description} avatar={lastBoards[0].profiles.avatar_url} name={lastBoards[0].profiles.full_name} gif={gif1} />
-                            </Link>
-
-                            <Link to={"/play/" + lastBoards[1].id}>
-                                <BoardPreview title={lastBoards[1].title} description={lastBoards[1].description} avatar={lastBoards[1].profiles.avatar_url} name={lastBoards[1].profiles.full_name} gif={gif2} />
-                            </Link>
-
-                            <Link to={"/play/" + lastBoards[2].id}>
-                                <BoardPreview title={lastBoards[2].title} description={lastBoards[2].description} avatar={lastBoards[2].profiles.avatar_url} name={lastBoards[2].profiles.full_name} gif={gif3} />
-                            </Link>
-                        </>
-                    }
-
+                    {!isLoading && lastBoards && lastBoards.map((board, index) => {
+                        if (index < 3) {
+                            return (
+                                <Link to={"/play/" + board.id}>
+                                    <BoardPreview title={board.title} description={board.description} avatar={board.profiles.avatar_url} name={board.profiles.full_name} gif={index === 0 ? gif1 : index === 1 ? gif2 : gif3} />
+                                </Link>
+                            )
+                        }
+                    })}
                 </div>
                 *The animations are not from the generations.
             </div>
         </>
-
     )
 }

@@ -29,7 +29,7 @@ export default function CustomGame() {
                             <input min="3" value={cols} disabled className="input input-bordered w-full max-w-xs mx-5" />
                         </div>
                     </div>
-                    <button class="btn btn-secondary mt-5 w-72 " onClick={() => setCreate(true)}> {!create ? "CREATE" : ""} </button>
+                    <button className="btn btn-secondary mt-5 w-72 " onClick={() => setCreate(true)}> {!create ? "CREATE" : ""} </button>
                 </div>
             }
             {

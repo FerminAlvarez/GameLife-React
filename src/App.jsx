@@ -3,7 +3,7 @@ import Navbar from './components/Navbar/Navbar'
 import SettingsGame from './components/Game/SettingsGame'
 import Home from './pages/Home'
 import Explore from './pages/Explore'
-import SeeGame from './pages/SeeGame'
+import PostView from './pages/PostView'
 import { AuthContextProvider } from './context/AuthContext'
 import Footer from './components/Footer/Footer'
 
@@ -22,7 +22,7 @@ function App() {
 
           <Route path='/explore' element={<Explore />} />
           
-          <Route path='/play/:id' element={<SeeGame />} />
+          <Route path='/play/:id' element={<PostView />} />
         </Routes>
         <Footer />
         </div>
