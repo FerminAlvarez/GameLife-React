@@ -1,4 +1,5 @@
 import { userAuth } from "../../context/AuthContext"
+import { FcGoogle } from 'react-icons/fc'
 
 export default function User() {
     const { user, signInWithGoogle, signOut } = userAuth();
@@ -17,7 +18,7 @@ export default function User() {
                 </div>
             }
             {!user &&
-                <button className="menu btn btn-ghost" onClick={signInWithGoogle}>Log in with Google</button>
+                <button className="menu btn btn-ghost flex-row" onClick={signInWithGoogle}>Log in with Google <FcGoogle className='mx-2' size={20}/></button>
             }
         </>
     )
