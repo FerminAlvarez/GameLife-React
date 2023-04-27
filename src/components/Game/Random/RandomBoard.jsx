@@ -1,5 +1,6 @@
 import Board from '../Board';
 import PublishForm from '../PublishForm';
+import { userAuth } from '../../../context/AuthContext';
 
 const MIN_COLS = 3;
 const MAX_COLS = 30;
@@ -17,13 +18,16 @@ const randomGrid = (cols, rows) => {
 
 export default function RandomBoard() {
     const cols = Math.floor(Math.random() * (MAX_COLS - MIN_COLS + 1)) + MIN_COLS;
+    const { user } = userAuth();
     const rows = cols;
     let initGrid = randomGrid(cols, rows);
 
     return (
         <>
             <Board initGrid={initGrid} cols={cols} rows={cols} />
-            <PublishForm initGrid={initGrid} />
+            {user &&
+                <PublishForm initGrid={initGrid} />
+            }
         </>
     )
 }

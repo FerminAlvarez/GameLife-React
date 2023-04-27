@@ -2,7 +2,10 @@ import { useState } from 'react'
 import Board from './Board'
 import EditableBoard from './Custom/EditableBoard'
 import PublishForm from './PublishForm'
+import { userAuth } from '../../context/AuthContext'
+
 export default function CustomGame() {
+    const { user } = userAuth();
     const [cols, setCols] = useState(3)
     const [initGrid, setInitGrid] = useState();
     const [create, setCreate] = useState(false)
@@ -44,7 +47,9 @@ export default function CustomGame() {
                 play &&
                 <div>
                     <Board initGrid={initGrid} cols={cols} rows={cols} />
-                    <PublishForm initGrid={initGrid} />
+                    {user &&
+                        <PublishForm initGrid={initGrid} />
+                    }
                 </div>
             }
         </>
